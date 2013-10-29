@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.betfair.cougar.archetypes</groupId>
+        <artifactId>cougar-archetypes</artifactId>
+        <version>3.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>simple-service</artifactId>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>simple-idd</module>
+        <module>simple-application</module>
+        <module>simple-launch</module>
+    </modules>
+
+    <properties>
+        <cougar.version>3.0-SNAPSHOT</cougar.version>
+    </properties>
+
+    <!-- If you want to create an archetype from this service: 'mvn clean install -P archetype' -->
+    <profiles>
+        <profile>
+            <id>archetype</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-archetype-plugin</artifactId>
+                        <version>2.0</version>
+                        <inherited>false</inherited>
+                        <configuration>
+                            <!-- Process normal Java files & docs -->
+                            <archetypeFilteredExtentions>java,xml,txt,properties</archetypeFilteredExtentions>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>generate-archetype-install</id>
+                                <phase>install</phase>
+                                <configuration>
+                                    <archetypePostPhase>install</archetypePostPhase>
+                                    <packageName>${project.groupId}</packageName>
+
+                                </configuration>
+                                <goals>
+                                    <goal>create-from-project</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>generate-archetype-deploy</id>
+                                <phase>deploy</phase>
+                                <configuration>
+                                    <archetypePostPhase>deploy</archetypePostPhase>
+                                </configuration>
+                                <goals>
+                                    <goal>create-from-project</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <!-- If you want to rename the service: 'mvn initialize -P rename -Dto=Foo' -->
+        <profile>
+            <id>rename</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-antrun-plugin</artifactId>
+                        <version>1.6</version>
+                        <inherited>false</inherited>
+                        <executions>
+                            <execution>
+                                <phase>initialize</phase>
+                                <configuration>
+                                    <target>
+                                        <echo message="Changing service name from 'Simple' to '${to}'..." />
+                                        <replace dir="${basedir}" value="${to}">
+                                            <include name="**/*.xml" />
+                                            <include name="**/*.java" />
+                                            <include name="**/*.properties" />
+                                            <replacetoken>Simple</replacetoken>
+                                        </replace>
+                                        <move todir="${basedir}" verbose="true" overwrite="true">
+                                            <fileset dir="${basedir}" />
+                                            <mapper type="regexp" from="(.*)Simple(.*)" to="\1${to}\2" />
+                                        </move>
+                                    </target>
+                                </configuration>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <dependencies>
+                            <dependency>
+                                <groupId>org.apache.ant</groupId>
+                                <artifactId>ant</artifactId>
+                                <version>1.8.2</version>
+                            </dependency>
+                        </dependencies>
+
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+    
+</project>

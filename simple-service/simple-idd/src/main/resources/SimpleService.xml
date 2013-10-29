@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+  ~ Copyright 2013, The Sporting Exchange Limited
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<interface name="Simple"
+           version="1.0"
+           namespace="com.betfair.cougar.simple"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="http://www.betfair.com/BSIDL/4.0.xsd">
+
+    <operation name="getTime" since="1.0">
+        <description/>
+        <parameters>
+            <request/>
+            <response type="dateTime">
+                <description/>
+            </response>
+        </parameters>
+    </operation>
+
+    <dataType name="SomeDataType">
+        <parameter name="message" type="string" mandatory="false"/>
+    </dataType>
+
+    <exceptionType name="SimpleException" prefix="SXE">
+        <!--
+            Cougar currently requires that all Exceptions have a first parameter
+            that is defined by its valid values, all defined by an incrementing id
+        -->
+        <parameter name="errorCode" type="string">
+            <validValues>
+                <value id="1" name="GENERIC">
+                    <description>Generic Error</description>
+                </value>
+            </validValues>
+        </parameter>
+        <parameter name="reason" type="string"/>
+    </exceptionType>
+
+</interface>

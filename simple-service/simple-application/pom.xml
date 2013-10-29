@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.betfair.cougar.archetypes</groupId>
+        <artifactId>simple-service</artifactId>
+        <version>3.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>simple-application</artifactId>
+    <version>3.0-SNAPSHOT</version>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.betfair.cougar</groupId>
+                <artifactId>cougar-codegen-plugin</artifactId>
+                <version>${cougar.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>process</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <services>
+                        <service>
+                            <serviceName>SimpleService</serviceName>
+                        </service>
+                    </services>
+                    <iddAsResource>true</iddAsResource>
+                    <server>true</server>
+                </configuration>
+            </plugin>
+        </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+            <resource>
+                <directory>target/generated-sources/java</directory>
+                <includes>
+                    <include>**/jaxb.index</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>target/generated-resources</directory>
+                <includes>
+                    <include>**/*.wsdl</include>
+                    <include>**/*.xsd</include>
+                    <include>**/*.idd</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>simple-idd</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.betfair.cougar</groupId>
+            <artifactId>cougar-core-impl</artifactId>
+            <version>${cougar.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.betfair.cougar</groupId>
+            <artifactId>cougar-transport-api</artifactId>
+            <version>${cougar.version}</version>
+        </dependency>
+    </dependencies>
+    
+</project>
