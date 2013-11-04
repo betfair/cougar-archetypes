@@ -10,7 +10,7 @@
         <version>3.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>simple-idd</artifactId>
+    <artifactId>__rootArtifactId__-idd</artifactId>
     <version>3.0-SNAPSHOT</version>
 
 

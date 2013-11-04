@@ -5,18 +5,18 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.betfair.cougar.archetypes</groupId>
-        <artifactId>cougar-archetypes</artifactId>
-        <version>3.0-SNAPSHOT</version>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
     </parent>
 
     <artifactId>simple-service</artifactId>
     <packaging>pom</packaging>
 
     <modules>
-        <module>simple-idd</module>
-        <module>simple-application</module>
-        <module>simple-launch</module>
+        <module>__rootArtifactId__-idd</module>
+        <module>__rootArtifactId__-application</module>
+        <module>__rootArtifactId__-launch</module>
     </modules>
 
     <properties>
@@ -48,7 +48,6 @@
                                 <configuration>
                                     <archetypePostPhase>install</archetypePostPhase>
                                     <packageName>${project.groupId}</packageName>
-
                                 </configuration>
                                 <goals>
                                     <goal>create-from-project</goal>
@@ -87,8 +86,8 @@
                                 <phase>initialize</phase>
                                 <configuration>
                                     <target>
-                                        <echo message="Changing service name from 'Simple' to '${to}'..." />
-                                        <replace dir="${basedir}" value="${to}">
+                                        <echo message="Changing service name from 'Simple' to '${upper}'..." />
+                                        <replace dir="${basedir}" value="${upper}">
                                             <include name="**/*.xml" />
                                             <include name="**/*.java" />
                                             <include name="**/*.properties" />
@@ -96,7 +95,31 @@
                                         </replace>
                                         <move todir="${basedir}" verbose="true" overwrite="true">
                                             <fileset dir="${basedir}" />
-                                            <mapper type="regexp" from="(.*)Simple(.*)" to="\1${to}\2" />
+                                            <mapper type="regexp" from="(.*)Simple(.*)" to="\1${upper}\2" />
+                                        </move>
+
+                                        <echo message="Changing service name from 'simple' to '${lower}'..." />
+                                        <replace dir="${basedir}" value="${lower}">
+                                            <include name="**/*.xml" />
+                                            <include name="**/*.java" />
+                                            <include name="**/*.properties" />
+                                            <replacetoken>simple</replacetoken>
+                                        </replace>
+                                        <move todir="${basedir}" verbose="true" overwrite="true">
+                                            <fileset dir="${basedir}" />
+                                            <mapper type="regexp" from="(.*)simple(.*)" to="\1${lower}\2" />
+                                        </move>
+
+                                        <echo message="Changing service name from '__rootArtifactId__' to '${lower}'..." />
+                                        <replace dir="${basedir}" value="${lower}">
+                                            <include name="**/*.xml" />
+                                            <include name="**/*.java" />
+                                            <include name="**/*.properties" />
+                                            <replacetoken>__rootArtifactId__</replacetoken>
+                                        </replace>
+                                        <move todir="${basedir}" verbose="true" overwrite="true">
+                                            <fileset dir="${basedir}" />
+                                            <mapper type="regexp" from="(.*)__rootArtifactId__(.*)" to="\1${lower}\2" />
                                         </move>
                                     </target>
                                 </configuration>

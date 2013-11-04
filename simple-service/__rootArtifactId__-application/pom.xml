@@ -10,7 +10,7 @@
         <version>3.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>simple-application</artifactId>
+    <artifactId>__rootArtifactId__-application</artifactId>
     <version>3.0-SNAPSHOT</version>
 
     <build>

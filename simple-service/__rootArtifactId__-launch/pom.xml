@@ -10,7 +10,7 @@
         <version>3.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>simple-launch</artifactId>
+    <artifactId>__rootArtifactId__-launch</artifactId>
     <version>3.0-SNAPSHOT</version>
 
     <build>
