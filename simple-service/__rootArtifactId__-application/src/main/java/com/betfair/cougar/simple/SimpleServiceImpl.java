@@ -2,6 +2,7 @@ package com.betfair.cougar.simple;
 
 import com.betfair.cougar.api.ContainerContext;
 import com.betfair.cougar.api.RequestContext;
+import com.betfair.cougar.core.api.ev.TimeConstraints;
 import com.betfair.cougar.simple.v1.SimpleService;
 
 import java.util.Date;
@@ -17,7 +18,7 @@ public class SimpleServiceImpl implements SimpleService {
 
 
     @Override
-    public Date getTime(RequestContext ctx) {
+    public Date getTime(RequestContext ctx, TimeConstraints timeConstraints) {
         return new Date();
     }
 }

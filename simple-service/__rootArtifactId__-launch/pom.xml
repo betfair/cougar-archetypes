@@ -7,11 +7,11 @@
     <parent>
         <groupId>com.betfair.cougar.archetypes</groupId>
         <artifactId>simple-service</artifactId>
-        <version>3.0-SNAPSHOT</version>
+        <version>3.2-SNAPSHOT</version>
     </parent>
 
     <artifactId>__rootArtifactId__-launch</artifactId>
-    <version>3.0-SNAPSHOT</version>
+    <version>3.2-SNAPSHOT</version>
 
     <build>
 
