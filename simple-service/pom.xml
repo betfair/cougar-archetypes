@@ -20,7 +20,7 @@
     </modules>
 
     <properties>
-        <cougar.version>3.0-SNAPSHOT</cougar.version>
+        <cougar.version>3.2.1</cougar.version>
     </properties>
 
     <!-- If you want to create an archetype from this service: 'mvn clean install -P archetype' -->
