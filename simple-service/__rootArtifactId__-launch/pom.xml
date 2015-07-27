@@ -44,6 +44,10 @@
                             <key>cougar.app.name</key>
                             <value>simple-service</value>
                         </systemProperty>
+                        <systemProperty>
+                            <key>cougar.addressUtils.allowLoopBackIfNoOthers</key>
+                            <value>true</value>
+                        </systemProperty>
                     </systemProperties>
                 </configuration>
             </plugin>
