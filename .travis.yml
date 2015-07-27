@@ -1,0 +1,24 @@
+sudo: false
+language: java
+jdk:
+  - oraclejdk7
+notifications:
+  email:
+    recipients:
+      - betfair-cougar-dev@googlegroups.com
+    on_success: always
+    on_failure: always
+before_install:
+   - "gem install --version 0.8.9 faraday"
+   - "gem install travis-artifacts"
+   - "echo 'MAVEN_OPTS = $MAVEN_OPTS'"
+install: "echo 'No install command here!'"
+script: "bash buildArchetypes.sh"
+after_success:
+  - "bash deploySnapshots.sh"
+env:
+ global:
+   # Sonatype Snapshot repo credentials
+   - secure: "dN4cQEqoxAs4jMWLJqOfuJobSh7lqj5Ugo64sQcKLzJqpwBXaMyQvFsQxarWqbFWRjzSu8lw1+vQmz6R+dW6ysPDkQ/MqD1ETieBJjuQ46ynYMOVdR5hh4ovMnfCsCzpoaCdsuNFv+PwU6BN5LzQA7iKHSYDINzQKy1gobzzYtA="
+   - secure: "bFEuZ3TbP/saFjqPF2naGi2QVRCfghMx/ztYR2GUuBy1NI70NSXkUhkob8Lyef2+zI9dDz4rF3+DocIb4Yx7BGoV16qxdOhGUPAKRyFKzgN9xH/8gSNJmtZvuHfrTA4lfluiu8NTbqBq7I2T4L4LQCldpmSvWgHr+Ag4hJ2kotk="
+
