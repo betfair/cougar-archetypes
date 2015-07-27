@@ -12,10 +12,4 @@ fi
 
 set -e
 
-for i in `ls`; do
-  if [[ -d $i ]]; then
-    cd $i
-    mvn deploy -DskipTests=true -s ../upload_settings.xml -B
-    cd ..
-  fi
-done 
+mvn deploy -DskipTests=true -s upload_settings.xml -B
