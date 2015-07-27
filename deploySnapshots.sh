@@ -10,6 +10,8 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
   exit 2
 fi
 
+set -e
+
 for i in `ls`; do
   if [[ -d $i ]]; then
     cd $i
