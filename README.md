@@ -8,3 +8,5 @@ mvn deploy/install -N -Parchetype
 
 Archetypes depending on released versions of Cougar should have no parent pom.
 Those depending on snapshots will need to have the oss sonatype parent (hopefully not too often)
+
+[![Build Status](https://travis-ci.org/betfair/cougar-archetypes.svg?branch=master)](https://travis-ci.org/betfair/cougar-archetypes)
