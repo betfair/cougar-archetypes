@@ -57,7 +57,7 @@
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>simple-application</artifactId>
+            <artifactId>__rootArtifactId__-application</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

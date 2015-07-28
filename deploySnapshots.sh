@@ -12,4 +12,4 @@ fi
 
 set -e
 
-mvn deploy -DskipTests=true -s upload_settings.xml -B
+mvn deploy -DskipTests=true -s upload_settings.xml -B -Parchetype

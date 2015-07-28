@@ -61,7 +61,7 @@
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>simple-idd</artifactId>
+            <artifactId>__rootArtifactId__-idd</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
