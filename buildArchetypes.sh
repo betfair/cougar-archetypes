@@ -34,3 +34,7 @@ for i in `ls`; do
     pwd
   fi
 done 
+
+echo "==============="
+pwd
+ls -l
