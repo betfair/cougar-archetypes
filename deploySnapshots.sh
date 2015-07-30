@@ -12,5 +12,7 @@ fi
 
 set -e
 
-cat pom.xml
+cat pom.xml | grep -v wibble > 1
+mv 1 pom.xml
+
 mvn deploy -DskipTests=true -s upload_settings.xml -B -Parchetype
