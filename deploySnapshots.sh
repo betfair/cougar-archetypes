@@ -12,4 +12,5 @@ fi
 
 set -e
 
+cat pom.xml
 mvn deploy -DskipTests=true -s upload_settings.xml -B -Parchetype
